@@ -74,10 +74,64 @@ export default function Home() {
               </div>
             )}
 
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 8 }}>
-              <a href="https://wa.me/5519933005880?text=Ol%C3%A1!%20Tenho%20interesse%20na%20promo%C3%A7%C3%A3o%20Black%20Friday%20Desktop" target="_blank" rel="noreferrer" style={{ background: "#ff2b2b", color: "#fff", textDecoration: "none", padding: 10, borderRadius: 8, textAlign: "center", fontWeight: 700 }}>Chamar no WhatsApp</a>
-              <a href="tel:+5519933005880" style={{ border: "2px solid #f7b500", color: "#f7b500", padding: 10, borderRadius: 8, textAlign: "center", fontWeight: 700, textDecoration: "none" }}>Ligar agora</a>
-            </div>
+           <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 12 }}>
+  {/* Botão WhatsApp */}
+  <a
+    href="https://wa.me/5519993005880?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20promo%C3%A7%C3%A3o%20Black%20Friday%20Desktop"
+    target="_blank"
+    rel="noreferrer"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "linear-gradient(90deg, #25D366, #128C7E)",
+      color: "#fff",
+      padding: "12px 18px",
+      borderRadius: 50,
+      fontWeight: 700,
+      textDecoration: "none",
+      fontSize: 15,
+      boxShadow: "0 4px 10px rgba(37, 211, 102, 0.3)",
+      transition: "transform 0.2s, box-shadow 0.2s",
+    }}
+    onMouseOver={(e) => {
+      e.target.style.transform = "scale(1.05)";
+      e.target.style.boxShadow = "0 6px 12px rgba(37, 211, 102, 0.5)";
+    }}
+    onMouseOut={(e) => {
+      e.target.style.transform = "scale(1)";
+      e.target.style.boxShadow = "0 4px 10px rgba(37, 211, 102, 0.3)";
+    }}
+  >
+    💬 Falar no WhatsApp
+  </a>
+
+  {/* Botão de ligação */}
+  <a
+    href="tel:+5519993005880"
+    style={{
+      border: "2px solid #f7b500",
+      color: "#f7b500",
+      padding: 12,
+      borderRadius: 50,
+      textAlign: "center",
+      fontWeight: 700,
+      textDecoration: "none",
+      transition: "background 0.2s, color 0.2s",
+    }}
+    onMouseOver={(e) => {
+      e.target.style.background = "#f7b500";
+      e.target.style.color = "#111";
+    }}
+    onMouseOut={(e) => {
+      e.target.style.background = "transparent";
+      e.target.style.color = "#f7b500";
+    }}
+  >
+    📞 Ligar agora
+  </a>
+</div>
+
           </aside>
         </motion.section>
 
