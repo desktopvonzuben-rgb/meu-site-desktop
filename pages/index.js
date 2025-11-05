@@ -108,7 +108,7 @@ export default function Home() {
 
   {/* Botão de ligação */}
   <a
-    href="tel:+5519993005880"
+    href="tel:+5519933005880"
     style={{
       border: "2px solid #f7b500",
       color: "#f7b500",
