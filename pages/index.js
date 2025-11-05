@@ -77,7 +77,7 @@ export default function Home() {
            <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 12 }}>
   {/* Botão WhatsApp */}
   <a
-    href="https://wa.me/5519993005880?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20promo%C3%A7%C3%A3o%20Black%20Friday%20Desktop"
+    href="https://wa.me/5519933005880?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20promo%C3%A7%C3%A3o%20Black%20Friday%20Desktop"
     target="_blank"
     rel="noreferrer"
     style={{
