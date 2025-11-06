@@ -30,7 +30,7 @@ export default function Home() {
             </div>
           </div>
           <div className="contact-top">
-            <div className="bf-label">🔥 <span className="neon-red">Black Friday</span></div>
+            <div className="bf-label neon-border">🔥 <span className="neon-red">Black Friday</span></div>
             <div className="phone-top">(19) 93300-5880</div>
           </div>
         </header>
@@ -43,14 +43,14 @@ export default function Home() {
             className="hero-grid"
           >
             <div className="hero-left">
-              <div className="neon-title">
+              <div className="neon-title neon-border">
                 BLACK <span className="neon-red">FRIDAY</span>
                 <div className="desktop-promo">
                   <span className="neon-yellow">DESKTOP</span> PROMO
                 </div>
               </div>
 
-              <div className="banner-cta">
+              <div className="banner-cta neon-border">
                 <div className="banner-inner">
                   <div className="banner-title">
                     Planos de 600 Mega e 1 Giga — Oferta Black Friday
@@ -87,7 +87,7 @@ export default function Home() {
                   <motion.article
                     key={i}
                     whileHover={{ scale: 1.04 }}
-                    className="plan-card"
+                    className="plan-card neon-border"
                   >
                     <div className="badge">BLACK FRIDAY</div>
                     <h3 className="plan-title">{p.title}</h3>
@@ -111,7 +111,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="discovery">
+              <div className="discovery neon-border">
                 <strong>DESCUBRA O POTENCIAL</strong>
                 <br />
                 <span className="highlight">DA SUA INTERNET HOJE</span>{" "}
@@ -119,7 +119,7 @@ export default function Home() {
               </div>
             </div>
 
-            <aside className="hero-aside">
+            <aside className="hero-aside neon-border">
               {!submitted ? (
                 <form className="lead-form" onSubmit={handleSubmit}>
                   <h4>Garanta sua oferta exclusiva ⚡</h4>
@@ -193,6 +193,14 @@ export default function Home() {
           --muted: #bfc3c7;
         }
 
+        .neon-border {
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.2),
+            0 0 20px rgba(255, 0, 0, 0.4), 0 0 30px rgba(255, 0, 0, 0.3);
+          border-radius: 10px;
+          padding: 6px;
+        }
+
         .page-root {
           min-height: 100vh;
           color: #fff;
@@ -202,7 +210,6 @@ export default function Home() {
           background-size: 600% 600%;
           animation: bgFlow 12s ease infinite;
         }
-
         @keyframes bgFlow {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
@@ -210,7 +217,6 @@ export default function Home() {
         }
 
         .container { max-width: 1100px; margin: 0 auto; }
-
         .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; gap:12px; }
         .brand { display:flex; align-items:center; gap:12px; }
         .logo { width:48px; height:48px; border-radius:10px; background: linear-gradient(135deg,#111,var(--accent)); display:flex; align-items:center; justify-content:center; color:#111; font-weight:800; }
@@ -219,28 +225,19 @@ export default function Home() {
 
         .hero-grid { display:grid; grid-template-columns: 1fr 380px; gap:20px; align-items:start; }
 
-        .neon-title { text-align:center; font-size:40px; margin-bottom:8px; }
-        .neon-red { color: var(--neon-red); text-shadow: 0 0 15px var(--neon-red), 0 0 40px var(--neon-red); font-weight:900; }
+        .neon-title { text-align:center; font-size:40px; margin-bottom:8px; text-transform: uppercase; }
+        .neon-red { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red), 0 0 30px var(--neon-red), 0 0 60px var(--neon-red); font-weight:900; }
         .neon-yellow { color: var(--neon-yellow); text-shadow: 0 0 25px var(--neon-yellow); font-weight:900; }
 
-        .plans-wrap { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin: 8px 0 18px; }
-        .plan-card {
-          width: 220px;
-          border-radius: 14px;
-          padding: 18px;
-          background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-          border: 2px solid var(--accent);
-          box-shadow: 0 0 15px rgba(255,191,0,0.4);
-          text-align:left;
+        .plan-card.neon-border { transition: 0.3s; }
+        .plan-card.neon-border:hover { box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
+
+        .float-cta { position:fixed; right:16px; bottom:18px; background: linear-gradient(90deg,#25D366,#128C7E); color:#fff; padding:14px 18px; border-radius:999px; font-weight:800; text-decoration:none; box-shadow:0 0 20px rgba(37,211,102,0.6); animation: pulse 2s infinite; }
+        @keyframes pulse {
+          0% { box-shadow: 0 0 10px rgba(37,211,102,0.6); }
+          50% { box-shadow: 0 0 25px rgba(37,211,102,0.9); }
+          100% { box-shadow: 0 0 10px rgba(37,211,102,0.6); }
         }
-
-        .badge { display:inline-block; background: rgba(255,191,0,0.12); color: var(--accent); padding:6px 8px; border-radius:6px; font-weight:800; margin-bottom:8px; }
-        .plan-title { color: var(--neon-red); margin:8px 0 6px; font-size:18px; }
-        .plan-features { list-style:disc; padding-left:18px; margin:0 0 12px; color:#d6d6d6; font-size:13px; }
-        .plan-price { font-weight:900; color: var(--accent); font-size:18px; margin-bottom:8px; text-align:left; }
-        .plan-cta { display:block; text-align:center; background: linear-gradient(90deg,#ffbf00,#ff3838); color:#111; padding:10px 12px; border-radius:10px; font-weight:800; text-decoration:none; }
-
-        .footer { text-align:center; color:#9aa0a6; margin-top:26px; font-size:13px; }
       `}</style>
     </div>
   );
