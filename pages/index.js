@@ -44,11 +44,15 @@ export default function Home() {
             className="hero-grid"
           >
             <div className="hero-left">
-             <div className="neon-title">
-  <span className="neon-red">BLACK FRIDAY</span>{" "}
-  <span className="neon-yellow">DESKTOP PROMO</span>
-</div>
+              <div className="neon-title">
+                {/* TITULO PRINCIPAL: BLACK FRIDAY vermelho neon */}
+                <div><span className="neon-red big">BLACK FRIDAY</span></div>
 
+                {/* DESKTOP PROMO em amarelo neon */}
+                <div className="desktop-promo">
+                  <span className="neon-yellow big">DESKTOP PROMO</span>
+                </div>
+              </div>
 
               <div className="banner-cta">
                 <div className="banner-inner">
@@ -157,7 +161,7 @@ export default function Home() {
 
               <div className="side-actions">
                 <a
-                  href={https://wa.me/${WA_NUMBER}?text=Quero%20a%20promo%20Black%20Friday%20Desktop!}
+                  href={`https://wa.me/${WA_NUMBER}?text=Quero%20a%20promo%20Black%20Friday%20Desktop!`}
                   target="_blank"
                   rel="noreferrer"
                   className="whatsapp-link"
@@ -179,7 +183,7 @@ export default function Home() {
 
       <a
         className="float-cta"
-        href={https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Quero%20o%20Plano%20Black%20Friday}
+        href={`https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Quero%20o%20Plano%20Black%20Friday`}
         target="_blank"
         rel="noreferrer"
       >
@@ -483,22 +487,7 @@ export default function Home() {
             width: 94%;
             margin: 0 auto;
           }
-           .h4-border { display:block; width:100%; }
-
-  .neon-red {
-    color: #ff0000;
-    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-    font-weight: 900;
-  }
-
-  .neon-yellow {
-    color: #ffd000;
-    text-shadow: 0 0 10px #ffd000, 0 0 20px #ffd000;
-    font-weight: 900;
-  }
-
-`}</style>
-
+          .h4-border { display:block; width:100%; }
         }
       `}</style>
     </div>
