@@ -183,7 +183,6 @@ export default function Home() {
         </footer>
       </div>
 
-      {/* Botão fixo do WhatsApp */}
       <a
         className="float-cta"
         href={`https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Quero%20o%20Plano%20Black%20Friday`}
@@ -196,29 +195,29 @@ export default function Home() {
 
       <style jsx>{`
         :root{
-          --bg-1: #000;
-          --bg-2: #0a0a0a; /* fundo bem escuro */
+          --bg-main: #000; /* fundo preto total */
           --gold: #d4af37;
           --neon-red: #ff2b2b;
           --neon-yellow: #ffbf00;
-          --highlight-btn: #00ffc3; /* cor destacada do botão flutuante */
+          --highlight-btn: #00ffc3;
           --muted: #bfc3c7;
         }
+
         .page-root{
           min-height:100vh;
           color:#fff;
           font-family: "Poppins", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
           padding:20px;
-          background: linear-gradient(180deg, var(--bg-1), var(--bg-2)); /* fundo escuro */
+          background-color: var(--bg-main); /* fundo preto puro */
         }
+
         .container{ max-width:1100px; margin:0 auto; }
 
         .topbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px;}
         .brand{ display:flex; align-items:center; gap:12px; }
         .logo{ width:48px; height:48px; border-radius:10px; background: linear-gradient(135deg,#111,var(--neon-yellow)); display:flex; align-items:center; justify-content:center; color:#111; font-weight:800; }
         .brand-text{ display:flex; flex-direction:column; }
-        .brand-title{ font-weight:800; font-size:18px; padding:6px 10px; border-radius:8px; }
-        .with-gold { box-shadow: 0 0 0 3px rgba(212,175,55,0.08), 0 6px 20px rgba(212,175,55,0.06); border: 2px solid rgba(212,175,55,0.18); background: linear-gradient(90deg, rgba(212,175,55,0.03), transparent); color: var(--neon-yellow); }
+        .brand-title{ font-weight:800; font-size:18px; padding:6px 10px; border-radius:8px; color: var(--neon-yellow);}
         .brand-sub{ color:var(--muted); font-size:13px; }
 
         .contact-top { text-align:right; }
@@ -228,59 +227,51 @@ export default function Home() {
         .hero-grid{ display:grid; grid-template-columns: 1fr 380px; gap:20px; align-items:start; }
 
         .neon-title{ text-align:center; margin-bottom:12px; }
-        .black-line{ font-size:40px; line-height:1; display:flex; align-items:center; justify-content:center; gap:8px; }
+        .black-line{ font-size:40px; display:flex; justify-content:center; gap:8px; }
         .black-text{ color:#fff; font-weight:700; }
-        .neon-red.big{ color: var(--neon-red); text-shadow: 0 6px 18px rgba(255,43,43,0.55), 0 0 36px rgba(255,43,43,0.25); font-weight:900; padding-left:6px; }
-        .desktop-promo{ margin-top:6px; font-size:42px; font-weight:900; display:flex; align-items:center; justify-content:center; gap:8px; }
-        .neon-yellow.big{ color: var(--neon-yellow); text-shadow: 0 8px 30px rgba(255,176,0,0.55); }
+        .neon-red.big{ color: var(--neon-red); text-shadow: 0 0 36px rgba(255,43,43,0.4); font-weight:900; }
+        .desktop-promo{ font-size:42px; font-weight:900; display:flex; justify-content:center; gap:8px; }
+        .neon-yellow.big{ color: var(--neon-yellow); text-shadow: 0 0 30px rgba(255,176,0,0.4); }
 
-        .promo-text{ color:#fff; font-weight:700; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+        .banner-inner{ background: rgba(255,255,255,0.05); border-radius:10px; padding:12px; text-align:center; border:1px solid rgba(247,181,0,0.15); }
 
-        .banner-cta{ display:flex; justify-content:center; margin-bottom:16px; }
-        .banner-inner{ width:100%; max-width:760px; background: rgba(255,255,255,0.05); border-radius:10px; padding:12px; border:1px solid rgba(247,181,0,0.1); text-align:center; }
-        .banner-title{ font-weight:700; }
-        .banner-sub{ color:var(--muted); margin-top:6px; font-size:14px; }
-
-        .plans-wrap{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin:10px 0 18px; }
+        .plans-wrap{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin:20px 0; }
         .plan-card{
           width: 260px;
           border-radius: 14px;
-          padding: 6px;
           background: none;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-          position: relative;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+          padding:6px;
         }
         .plan-inner{
-          background: #111; /* fundo interno escuro */
+          background: rgba(20,20,20,0.95); /* fundo escuro interno */
           color:#fff;
           border-radius: 10px;
           padding:18px;
-          min-height: 320px;
-          box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-          border: 3px solid rgba(212,175,55,0.95);
+          border: 3px solid var(--gold); /* borda dourada */
         }
-        .badge{ display:inline-block; background: var(--neon-yellow); color:#111; padding:8px 10px; border-radius:8px; font-weight:800; margin-bottom:10px; font-size:13px; text-align:center; }
-        .plan-title{ color: var(--neon-red); margin:8px 0 10px; font-size:22px; text-align:center; font-weight:900; }
-        .plan-features{ list-style:disc; padding-left:18px; margin:0 0 14px; color:#ddd; font-size:14px; }
-        .plan-features li{ margin-bottom:8px; }
+
+        .badge{ background: var(--neon-yellow); color:#111; padding:8px 10px; border-radius:8px; font-weight:800; margin-bottom:10px; display:inline-block; font-size:13px; text-align:center; }
+        .plan-title{ color: var(--neon-red); font-size:22px; text-align:center; font-weight:900; }
+        .plan-features{ list-style:disc; padding-left:18px; margin:10px 0 14px; color:#ddd; font-size:14px; }
         .plan-price{ font-weight:900; color: var(--neon-yellow); font-size:20px; margin-bottom:12px; text-align:center; }
         .plan-cta{ display:block; text-align:center; background: linear-gradient(90deg,var(--neon-yellow), var(--neon-red)); color:#111; padding:12px 14px; border-radius:10px; font-weight:800; text-decoration:none; margin-top:10px; width:100%; }
 
-        .discovery{ text-align:center; margin-top:12px; color:#d6d6d6; font-weight:700; margin-bottom:18px; }
-        .discovery .highlight{ color: var(--neon-yellow); font-weight:900; }
+        .discovery{ text-align:center; color:#d6d6d6; font-weight:700; margin:20px 0; }
+        .discovery .highlight{ color: var(--neon-yellow); }
 
         .hero-aside{ background: rgba(255,255,255,0.05); padding:16px; border-radius:12px; }
-        .form-title{ margin:0 0 12px; color: var(--neon-yellow); text-align:center; font-weight:800; }
-        .lead-form input, .lead-form textarea{ width:100%; padding:10px; border-radius:8px; background:#000; color:#fff; border:1px solid rgba(255,255,255,0.04); margin-bottom:8px; }
+        .form-title{ color: var(--neon-yellow); text-align:center; font-weight:800; margin-bottom:12px; }
+        .lead-form input, .lead-form textarea{ width:100%; padding:10px; border-radius:8px; background:#000; color:#fff; border:1px solid rgba(255,255,255,0.05); margin-bottom:8px; }
         .submit-btn{ width:100%; padding:10px; border-radius:8px; background: var(--neon-red); color:#fff; font-weight:800; border:none; cursor:pointer; }
 
         .side-actions{ margin-top:12px; display:flex; flex-direction:column; gap:10px; }
-        .whatsapp-link{ display:block; text-align:center; background: linear-gradient(90deg,#25D366,#128C7E); color:#fff; padding:12px; border-radius:50px; font-weight:800; text-decoration:none; }
-        .call-link{ text-align:center; border:2px solid var(--neon-yellow); color:var(--neon-yellow); padding:10px; border-radius:50px; text-decoration:none; font-weight:800; display:block; }
+        .whatsapp-link{ background: linear-gradient(90deg,#25D366,#128C7E); color:#fff; padding:12px; border-radius:50px; font-weight:800; text-align:center; text-decoration:none; }
+        .call-link{ border:2px solid var(--neon-yellow); color:var(--neon-yellow); padding:10px; border-radius:50px; text-align:center; font-weight:800; text-decoration:none; }
 
         .footer{ text-align:center; color:#9aa0a6; margin-top:26px; font-size:13px; }
 
-        /* botão flutuante destacado */
+        /* botão flutuante neon turquesa */
         .float-cta{
           position: fixed;
           right: 18px;
@@ -305,4 +296,5 @@ export default function Home() {
     </div>
   );
 }
+
 
