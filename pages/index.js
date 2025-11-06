@@ -1,136 +1,147 @@
-import React from "react";
-
 export default function Home() {
   return (
     <div
       style={{
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#0a0a0a",
+        backgroundColor: "#0d0d0d", // fundo escuro
+        color: "#fff",
         minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        width: "100%",
+        fontFamily: "Arial, sans-serif",
         textAlign: "center",
         padding: "20px",
-        position: "relative",
-        color: "white",
       }}
     >
-      {/* Banner centralizado */}
+      {/* Cabeçalho Black Friday */}
       <div
         style={{
-          background: "rgba(255, 215, 0, 0.1)",
-          border: "2px solid gold",
-          borderRadius: "20px",
-          padding: "25px 30px",
-          boxShadow: "0 0 25px rgba(255,215,0,0.7)",
-          marginBottom: "40px",
-          maxWidth: "400px",
+          background: "linear-gradient(145deg, #111, #222)",
+          borderRadius: "15px",
+          padding: "15px",
+          marginBottom: "25px",
+          boxShadow: "0 0 25px #FFD700",
+          display: "inline-block",
         }}
       >
-        <h1
+        <h2
           style={{
-            color: "gold",
-            fontSize: "1.9rem",
             fontWeight: "bold",
-            marginBottom: "10px",
+            textShadow:
+              "0 0 10px #ff2b2b, 0 0 20px #ff2b2b, 0 0 30px #ff2b2b",
           }}
         >
-          🔥 BLACK FRIDAY DESKTOP PROMO 🔥
-        </h1>
-        <p
-          style={{
-            color: "#fff",
-            fontSize: "1.1rem",
-            marginBottom: "20px",
-          }}
-        >
-          Planos com <strong>HBO Max grátis por 2 meses!</strong>
-        </p>
+          🔥 <span style={{ color: "#ff2b2b" }}>BLACK FRIDAY</span>{" "}
+          <span style={{ color: "#FFD700" }}>DESKTOP PROMO</span>
+        </h2>
         <a
-          href="https://wa.me/5519933005880?text=Quero%20ativar%20minha%20promo%C3%A7%C3%A3o%20Black%20Friday"
+          href="https://wa.me/5519933005880"
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            display: "inline-block",
-            backgroundColor: "#25d366",
-            color: "white",
-            padding: "12px 25px",
-            borderRadius: "50px",
-            fontWeight: "bold",
+            color: "#25D366",
+            fontSize: "20px",
             textDecoration: "none",
-            boxShadow: "0 0 10px rgba(0,0,0,0.4)",
-            transition: "transform 0.2s",
+            fontWeight: "bold",
           }}
-          onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
-          onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
         >
-          Quero ativar agora
+          (19) 93300-5880
         </a>
       </div>
 
-      {/* Plano Gamer */}
+      {/* Planos */}
       <div
         style={{
-          border: "2px solid gold",
-          borderRadius: "20px",
-          padding: "20px",
-          boxShadow: "0 0 15px rgba(255,215,0,0.5)",
-          width: "90%",
-          maxWidth: "400px",
-          marginBottom: "20px",
-          background: "rgba(255,255,255,0.05)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "25px",
         }}
       >
-        <h2 style={{ color: "gold" }}>💻 Plano Gamer</h2>
-        <p style={{ marginBottom: "15px" }}>
-          Internet super rápida + HBO Max grátis por 2 meses
-        </p>
-        <a
-          href="https://wa.me/5519933005880?text=Quero%20ativar%20o%20Plano%20Gamer"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-block",
-            backgroundColor: "#25d366",
-            color: "white",
-            padding: "10px 20px",
-            borderRadius: "50px",
-            fontWeight: "bold",
-            textDecoration: "none",
-            boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-          }}
-        >
-          Quero ativar agora
-        </a>
+        {[
+          {
+            nome: "PLANO BÁSICO",
+            preco: "R$ 99,90",
+            beneficio: "HBO Max grátis por 2 meses",
+          },
+          {
+            nome: "PLANO TURBO",
+            preco: "R$ 129,90",
+            beneficio: "HBO Max grátis por 2 meses",
+          },
+          {
+            nome: "PLANO GAMER",
+            preco: "R$ 149,90",
+            beneficio: "HBO Max grátis por 2 meses",
+          },
+        ].map((plano, i) => (
+          <div
+            key={i}
+            style={{
+              background: "linear-gradient(145deg, #111, #1c1c1c)",
+              border: "2px solid #FFD700",
+              borderRadius: "20px",
+              width: "90%",
+              maxWidth: "350px",
+              padding: "25px",
+              boxShadow: "0 0 25px rgba(255,215,0,0.4)",
+              transition: "transform 0.3s, box-shadow 0.3s",
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+              e.currentTarget.style.boxShadow =
+                "0 0 35px rgba(255,215,0,0.8)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow =
+                "0 0 25px rgba(255,215,0,0.4)";
+            }}
+          >
+            <h3 style={{ color: "#FFD700" }}>{plano.nome}</h3>
+            <p style={{ fontSize: "22px", fontWeight: "bold" }}>{plano.preco}</p>
+            <p style={{ fontSize: "16px", color: "#ccc" }}>{plano.beneficio}</p>
+            <a
+              href="https://wa.me/5519933005880?text=Quero%20ativar%20meu%20plano%20agora!"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                marginTop: "15px",
+                backgroundColor: "#25D366",
+                color: "#fff",
+                padding: "10px 20px",
+                borderRadius: "10px",
+                textDecoration: "none",
+                fontWeight: "bold",
+                boxShadow: "0 0 15px rgba(37,211,102,0.5)",
+              }}
+            >
+              Quero ativar agora
+            </a>
+          </div>
+        ))}
       </div>
 
-      {/* BOTÃO FIXO DO WHATSAPP */}
+      {/* Botão flutuante WhatsApp */}
       <a
-        href="https://wa.me/5519933005880?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais!"
+        href="https://wa.me/5519933005880?text=Olá!%20Quero%20saber%20sobre%20a%20promoção%20Black%20Friday."
         target="_blank"
         rel="noopener noreferrer"
         style={{
           position: "fixed",
           bottom: "25px",
           right: "25px",
-          backgroundColor: "#25d366",
+          backgroundColor: "#25D366",
+          borderRadius: "50%",
           width: "65px",
           height: "65px",
-          borderRadius: "50%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          boxShadow: "0 0 15px rgba(0,0,0,0.4)",
-          zIndex: 1000,
+          boxShadow: "0 0 20px rgba(0,0,0,0.4)",
+          zIndex: 999,
         }}
       >
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
-          alt="WhatsApp"
-          style={{ width: "35px", height: "35px" }}
-        />
+        <span style={{ fontSize: "30px", color: "white" }}>💬</span>
       </a>
     </div>
   );
