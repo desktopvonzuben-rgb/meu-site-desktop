@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
-  const WA_NUMBER = "5519933005880"; // número com DDI
+  const WA_NUMBER = "5519933005880";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -95,8 +95,6 @@ export default function Home() {
                     role="listitem"
                   >
                     <div className="badge">BLACK FRIDAY</div>
-
-                    {/* Inner white area to match visual with golden border around */}
                     <div className="plan-inner">
                       <h3 className="plan-title">{p.title}</h3>
                       <ul className="plan-features">
@@ -105,7 +103,6 @@ export default function Home() {
                         ))}
                       </ul>
                       <div className="plan-price">{p.price}</div>
-
                       <a
                         className="plan-cta"
                         href={`https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20${encodeURIComponent(
@@ -186,7 +183,7 @@ export default function Home() {
         </footer>
       </div>
 
-      {/* Floating WhatsApp CTA fixed on the side (center-right) */}
+      {/* Botão fixo do WhatsApp */}
       <a
         className="float-cta"
         href={`https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Quero%20o%20Plano%20Black%20Friday`}
@@ -194,16 +191,17 @@ export default function Home() {
         rel="noreferrer"
         aria-label="Quero ativar agora Whatsapp"
       >
-        💬 QUERO ATIVAR AGORA
+        💬 <span>QUERO ATIVAR AGORA</span>
       </a>
 
       <style jsx>{`
         :root{
           --bg-1: #000;
-          --bg-2: #0f0f10;
+          --bg-2: #0a0a0a; /* fundo bem escuro */
           --gold: #d4af37;
           --neon-red: #ff2b2b;
           --neon-yellow: #ffbf00;
+          --highlight-btn: #00ffc3; /* cor destacada do botão flutuante */
           --muted: #bfc3c7;
         }
         .page-root{
@@ -211,7 +209,7 @@ export default function Home() {
           color:#fff;
           font-family: "Poppins", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
           padding:20px;
-          background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+          background: linear-gradient(180deg, var(--bg-1), var(--bg-2)); /* fundo escuro */
         }
         .container{ max-width:1100px; margin:0 auto; }
 
@@ -229,7 +227,6 @@ export default function Home() {
 
         .hero-grid{ display:grid; grid-template-columns: 1fr 380px; gap:20px; align-items:start; }
 
-        /* Titles */
         .neon-title{ text-align:center; margin-bottom:12px; }
         .black-line{ font-size:40px; line-height:1; display:flex; align-items:center; justify-content:center; gap:8px; }
         .black-text{ color:#fff; font-weight:700; }
@@ -239,52 +236,42 @@ export default function Home() {
 
         .promo-text{ color:#fff; font-weight:700; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
 
-        /* Banner */
         .banner-cta{ display:flex; justify-content:center; margin-bottom:16px; }
-        .banner-inner{ width:100%; max-width:760px; background: linear-gradient(90deg, rgba(247,181,0,0.03), rgba(255,255,255,0.01)); border-radius:10px; padding:12px; border:1px solid rgba(247,181,0,0.06); text-align:center; }
+        .banner-inner{ width:100%; max-width:760px; background: rgba(255,255,255,0.05); border-radius:10px; padding:12px; border:1px solid rgba(247,181,0,0.1); text-align:center; }
         .banner-title{ font-weight:700; }
         .banner-sub{ color:var(--muted); margin-top:6px; font-size:14px; }
 
-        /* Plans wrap and cards */
         .plans-wrap{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin:10px 0 18px; }
         .plan-card{
           width: 260px;
           border-radius: 14px;
-          padding: 6px; /* outer padding to show golden border */
-          background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.0));
-          /* golden outer border like in example */
+          padding: 6px;
+          background: none;
           box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-        /* golden visible border */
-        .plan-card::before{
-          content: "";
-          position: absolute;
+          position: relative;
         }
         .plan-inner{
-          background: #fff;
-          color:#111;
+          background: #111; /* fundo interno escuro */
+          color:#fff;
           border-radius: 10px;
           padding:18px;
           min-height: 320px;
           box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-          border: 3px solid rgba(212,175,55,0.95); /* gold border thickness */
+          border: 3px solid rgba(212,175,55,0.95);
         }
-        .plan-card{ position: relative; } /* for ::before if needed */
         .badge{ display:inline-block; background: var(--neon-yellow); color:#111; padding:8px 10px; border-radius:8px; font-weight:800; margin-bottom:10px; font-size:13px; text-align:center; }
         .plan-title{ color: var(--neon-red); margin:8px 0 10px; font-size:22px; text-align:center; font-weight:900; }
-        .plan-features{ list-style:disc; padding-left:18px; margin:0 0 14px; color:#333; font-size:14px; }
+        .plan-features{ list-style:disc; padding-left:18px; margin:0 0 14px; color:#ddd; font-size:14px; }
         .plan-features li{ margin-bottom:8px; }
-        .plan-price{ font-weight:900; color: #222; font-size:20px; margin-bottom:12px; text-align:center; }
+        .plan-price{ font-weight:900; color: var(--neon-yellow); font-size:20px; margin-bottom:12px; text-align:center; }
         .plan-cta{ display:block; text-align:center; background: linear-gradient(90deg,var(--neon-yellow), var(--neon-red)); color:#111; padding:12px 14px; border-radius:10px; font-weight:800; text-decoration:none; margin-top:10px; width:100%; }
 
-        /* Discovery */
         .discovery{ text-align:center; margin-top:12px; color:#d6d6d6; font-weight:700; margin-bottom:18px; }
         .discovery .highlight{ color: var(--neon-yellow); font-weight:900; }
 
-        /* Aside / form */
-        .hero-aside{ background: rgba(255,255,255,0.03); padding:16px; border-radius:12px; }
+        .hero-aside{ background: rgba(255,255,255,0.05); padding:16px; border-radius:12px; }
         .form-title{ margin:0 0 12px; color: var(--neon-yellow); text-align:center; font-weight:800; }
-        .lead-form input, .lead-form textarea{ width:100%; padding:10px; border-radius:8px; background:#111; color:#fff; border:1px solid rgba(255,255,255,0.04); margin-bottom:8px; }
+        .lead-form input, .lead-form textarea{ width:100%; padding:10px; border-radius:8px; background:#000; color:#fff; border:1px solid rgba(255,255,255,0.04); margin-bottom:8px; }
         .submit-btn{ width:100%; padding:10px; border-radius:8px; background: var(--neon-red); color:#fff; font-weight:800; border:none; cursor:pointer; }
 
         .side-actions{ margin-top:12px; display:flex; flex-direction:column; gap:10px; }
@@ -293,39 +280,29 @@ export default function Home() {
 
         .footer{ text-align:center; color:#9aa0a6; margin-top:26px; font-size:13px; }
 
-        /* floating CTA */
+        /* botão flutuante destacado */
         .float-cta{
           position: fixed;
           right: 18px;
           top: 45%;
           transform: translateY(-50%);
-          background: linear-gradient(90deg, var(--neon-yellow), var(--neon-red));
-          color:#111;
-          padding:12px 18px;
+          background: var(--highlight-btn);
+          color:#000;
+          padding:14px 20px;
           border-radius: 999px;
-          font-weight:800;
+          font-weight:900;
           text-decoration:none;
-          box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+          box-shadow: 0 0 30px var(--highlight-btn);
           z-index: 9999;
         }
 
-        /* mobile tweaks */
         @media (max-width: 900px){
           .hero-grid{ grid-template-columns: 1fr; }
-          .neon-title{ text-align:center; }
-          .desktop-promo{ font-size:32px; }
-          .black-line{ font-size:28px; }
-          .plans-wrap{ gap:12px; }
           .plan-card{ width: 94%; margin: 10px auto; }
-          .hero-aside{ order: 2; margin-top: 18px; }
-          .hero-left{ order: 1; }
           .float-cta{ right: 12px; top: auto; bottom: 18px; transform:none; }
-          .plan-inner{ min-height: 260px; padding:14px; }
-          .plan-title{ font-size:20px; }
-          .brand-title.with-gold{ font-size:16px; padding:4px 8px; }
-          .form-title{ font-size:16px; }
         }
       `}</style>
     </div>
   );
 }
+
