@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
-  const WA_NUMBER = "5519933005880";
+  const WA_NUMBER = "5519933005880"; // número com DDI
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -13,6 +13,7 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Lead enviado:", formData);
     setSubmitted(true);
     setFormData({ name: "", phone: "", message: "" });
   };
@@ -24,12 +25,12 @@ export default function Home() {
           <div className="brand">
             <div className="logo">D</div>
             <div className="brand-text">
-              <div className="brand-title">DESKTOP</div>
+              <div className="brand-title gold-border">DESKTOP</div>
               <div className="brand-sub">Internet residencial e empresarial</div>
             </div>
           </div>
           <div className="contact-top">
-            <div className="bf-label">🔥 Black Friday</div>
+            <div className="bf-label neon-fire">🔥 Black Friday</div>
             <div className="phone-top">(19) 93300-5880</div>
           </div>
         </header>
@@ -43,9 +44,9 @@ export default function Home() {
           >
             <div className="hero-left">
               <div className="neon-title">
-                <span className="neon-red">BLACK FRIDAY</span>
+                <span className="neon-fire">BLACK FRIDAY</span>
                 <div className="desktop-promo">
-                  <span className="neon-yellow">DESKTOP PROMO</span>
+                  <span className="neon-yellow">DESKTOP</span> PROMO
                 </div>
               </div>
 
@@ -60,36 +61,35 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Planos */}
               <div className="plans-wrap">
                 {[
                   {
-                    title: "600 MEGA",
+                    title: "600 MEGA + HBO Max por 2 meses",
                     features: [
-                      "600 Mega de download",
-                      "300 Mega de upload",
                       "HBO Max grátis por 2 meses",
                       "Wi-Fi incluso",
+                      "600 Mega de download",
+                      "300 Mega de upload",
                     ],
-                    price: "R$ 99,99/mês",
+                    price: "R$ 99,99",
                   },
                   {
-                    title: "1 GIGA",
+                    title: "1 GIGA + HBO Max por 2 meses",
                     features: [
-                      "1 Giga de download",
-                      "500 Mega de upload",
                       "HBO Max grátis por 2 meses",
                       "Wi-Fi 6 incluso",
+                      "1 Giga de download",
+                      "500 Mega de upload",
                     ],
-                    price: "R$ 119,99/mês",
+                    price: "R$ 119,99",
                   },
                 ].map((p, i) => (
                   <motion.article
                     key={i}
                     whileHover={{ scale: 1.04 }}
-                    className="plan-card"
+                    className="plan-card neon-border"
                   >
-                    <div className="badge">BLACK FRIDAY</div>
+                    <div className="badge neon-fire">BLACK FRIDAY</div>
                     <h3 className="plan-title">{p.title}</h3>
                     <ul className="plan-features">
                       {p.features.map((f, idx) => (
@@ -98,8 +98,8 @@ export default function Home() {
                     </ul>
                     <div className="plan-price">{p.price}</div>
                     <a
-                      className="plan-cta"
-                      href={`https://wa.me/${WA_NUMBER}?text=Quero%20assinar%20o%20plano%20${encodeURIComponent(
+                      className="plan-cta bordered-btn"
+                      href={`https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20${encodeURIComponent(
                         p.title
                       )}`}
                       target="_blank"
@@ -119,11 +119,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Formulário */}
             <aside className="hero-aside">
               {!submitted ? (
                 <form className="lead-form" onSubmit={handleSubmit}>
-                  <h4>Garanta já sua oferta ⚡</h4>
+                  <h4>Garanta já sua oferta 💥</h4>
                   <input
                     name="name"
                     value={formData.name}
@@ -144,7 +143,7 @@ export default function Home() {
                     onChange={handleChange}
                     placeholder="Mensagem (opcional)"
                   />
-                  <button type="submit" className="submit-btn">
+                  <button type="submit" className="submit-btn bordered-btn">
                     Enviar
                   </button>
                 </form>
@@ -154,6 +153,20 @@ export default function Home() {
                   <div className="sent-txt">Vamos retornar pelo WhatsApp!</div>
                 </div>
               )}
+
+              <div className="side-actions">
+                <a
+                  href={`https://wa.me/${WA_NUMBER}?text=Quero%20a%20promo%20Black%20Friday%20Desktop!`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="whatsapp-link"
+                >
+                  💬 Falar no WhatsApp
+                </a>
+                <a href="tel:+5519933005880" className="call-link">
+                  📞 Ligar agora
+                </a>
+              </div>
             </aside>
           </motion.section>
         </main>
@@ -163,10 +176,9 @@ export default function Home() {
         </footer>
       </div>
 
-      {/* Botão flutuante */}
       <a
-        className="float-cta"
-        href={`https://wa.me/${WA_NUMBER}?text=Olá!%20Quero%20a%20promo%20Black%20Friday%20Desktop!`}
+        className="float-cta bordered-btn"
+        href={`https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Quero%20o%20Plano%20Black%20Friday`}
         target="_blank"
         rel="noreferrer"
       >
@@ -181,199 +193,54 @@ export default function Home() {
           --muted: #bfc3c7;
         }
 
-        .page-root {
-          min-height: 100vh;
-          color: #fff;
-          font-family: "Poppins", sans-serif;
-          padding: 20px;
-          background: linear-gradient(270deg, #000, #0a0a0a, #111);
-          background-size: 600% 600%;
-          animation: bgFlow 12s ease infinite;
-        }
-
-        @keyframes bgFlow {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        .container {
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-
-        .topbar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 18px;
-          flex-wrap: wrap;
-        }
-
-        .brand {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .logo {
-          width: 48px;
-          height: 48px;
-          border-radius: 10px;
-          background: linear-gradient(135deg, #111, var(--accent));
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #111;
-          font-weight: 800;
-        }
-
-        .brand-title {
-          font-weight: 800;
-          font-size: 18px;
-        }
-
-        .brand-sub {
-          color: var(--muted);
-          font-size: 13px;
-        }
-
-        .neon-title {
-          text-align: center;
-          font-size: 38px;
-          margin-bottom: 8px;
-        }
-
-        .neon-red {
+        .neon-fire {
           color: var(--neon-red);
-          text-shadow: 0 0 25px var(--neon-red);
+          text-shadow: 0 0 8px #ff0000, 0 0 15px #ff3c00, 0 0 25px #ff6600;
           font-weight: 900;
         }
 
-        .neon-yellow {
-          color: var(--neon-yellow);
-          text-shadow: 0 0 25px var(--neon-yellow);
-          font-weight: 900;
-        }
-
-        .plans-wrap {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-          margin-top: 20px;
-        }
-
-        .plan-card {
-          width: 250px;
-          border-radius: 14px;
-          padding: 18px;
-          background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-          border: 2px solid #ff1a1a; /* 🔥 BORDA NEON VERMELHA */
-          box-shadow: 0 0 20px #ff1a1a55;
-          text-align: left;
-        }
-
-        .badge {
-          display: inline-block;
-          background: rgba(255, 26, 26, 0.2);
-          color: var(--neon-red);
-          padding: 5px 8px;
+        .gold-border {
+          border: 2px solid gold;
+          padding: 4px 8px;
           border-radius: 6px;
-          font-weight: 800;
-          margin-bottom: 8px;
         }
 
-        .plan-cta {
-          display: block;
-          text-align: center;
-          background: linear-gradient(90deg, #ffbf00, #ff1a1a);
-          color: #111;
-          padding: 10px 12px;
-          border-radius: 10px;
-          font-weight: 800;
-          text-decoration: none;
-          border: 2px solid #111; /* 🟡 BORDA NO BOTÃO */
+        .neon-border {
+          border: 2px solid rgba(255, 187, 0, 0.8);
+          box-shadow: 0 0 20px rgba(255, 187, 0, 0.5);
         }
 
-        .lead-form {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          background: rgba(255, 26, 26, 0.08);
-          border: 1px solid rgba(255, 26, 26, 0.2);
-          padding: 16px;
-          border-radius: 12px;
+        .bordered-btn {
+          border: 2px solid rgba(255, 187, 0, 0.8);
+          box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
         }
 
         .lead-form h4 {
-          margin: 0 0 8px;
-          color: var(--accent);
+          color: #fff;
+          background: linear-gradient(90deg, #ff0000, #ff8c00);
+          padding: 10px;
+          border-radius: 8px;
           text-align: center;
-        }
-
-        .lead-form input,
-        .lead-form textarea {
-          width: 100%;
-          padding: 10px;
-          border-radius: 8px;
-          background: #111;
-          color: #fff;
-          border: none;
-        }
-
-        .submit-btn {
-          width: 100%;
-          padding: 10px;
-          border-radius: 8px;
-          background: var(--neon-red);
-          color: #fff;
-          font-weight: 800;
-          border: none;
-          cursor: pointer;
-        }
-
-        .float-cta {
-          position: fixed;
-          right: 16px;
-          bottom: 18px;
-          background: linear-gradient(90deg, #ffbf00, #ff1a1a);
-          color: #111;
-          padding: 14px 18px;
-          border-radius: 999px;
-          font-weight: 800;
-          text-decoration: none;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-          z-index: 999;
         }
 
         @media (max-width: 900px) {
           .hero-grid {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: 1fr;
+            gap: 10px;
           }
-
           .plans-wrap {
             flex-direction: column;
             align-items: center;
           }
-
           .plan-card {
-            width: 100%;
-            max-width: 330px;
+            width: 95%;
           }
-
-          .lead-form {
-            margin-top: 20px;
+          .hero-aside {
+            margin-top: 16px;
           }
         }
       `}</style>
     </div>
   );
 }
+
