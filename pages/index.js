@@ -12,7 +12,6 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // placeholder: em produção você integraria com API/Sheets/CRM
     console.log("Lead enviado:", formData);
     setSubmitted(true);
     setFormData({ name: "", phone: "", message: "" });
@@ -105,7 +104,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* aside: mantém formulário e botões */}
             <aside className="hero-aside">
               {!submitted ? (
                 <form className="lead-form" onSubmit={handleSubmit}>
@@ -158,7 +156,6 @@ export default function Home() {
         <footer className="footer">© Desktop — Promoção válida por tempo limitado.</footer>
       </div>
 
-      {/* floating CTA bottom-right */}
       <a
         className="float-cta"
         href={`https://wa.me/${WA_NUMBER}?text=Ol%C3%A1!%20Quero%20o%20Plano%20Black`}
@@ -172,7 +169,7 @@ export default function Home() {
       <style jsx>{`
         :root {
           --bg-1: #000;
-          --bg-2: #0f0f10;
+          --bg-2: #050505;
           --accent: #f7b500;
           --neon-red: #ff2b2b;
           --neon-yellow: #ffbf00;
@@ -180,7 +177,7 @@ export default function Home() {
         }
         .page-root {
           min-height: 100vh;
-          background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+          background: radial-gradient(circle at top, #0a0a0a 0%, #000 100%);
           color: #fff;
           font-family: Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
           padding: 18px;
@@ -204,50 +201,15 @@ export default function Home() {
         .hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 20px; align-items:start; }
         .neon-title { text-align:center; margin-bottom: 14px; }
         .black-friday { font-size: 36px; margin:0; line-height:1; color: #fff; }
-        .neon-red { color: var(--neon-red); text-shadow: 0 6px 18px rgba(255,43,43,0.55), 0 0 36px rgba(255,43,43,0.35); font-weight:900; }
+        .neon-red { color: var(--neon-red); text-shadow: 0 6px 18px rgba(255,43,43,0.55); font-weight:900; }
         .desktop-promo { font-size: 44px; margin-top:6px; letter-spacing: 1px; }
         .neon-yellow { color: var(--neon-yellow); text-shadow: 0 8px 30px rgba(255,176,0,0.7); font-weight:900; }
 
-        .banner-cta { display:flex; justify-content:center; margin-bottom:18px; }
-        .banner-inner { width:100%; max-width:760px; background: linear-gradient(90deg, rgba(247,181,0,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(247,181,0,0.12); padding:14px; border-radius:10px; text-align:center; }
-        .banner-title { font-weight:700; }
-        .banner-sub { color: var(--muted); margin-top:6px; font-size:14px; }
+        .banner-inner { background: rgba(255,255,255,0.05); border: 1px solid rgba(247,181,0,0.15); }
 
-        .plans-wrap { display:flex; gap: 14px; justify-content:center; flex-wrap:wrap; margin: 8px 0 20px; }
-        .plan-card { width: 220px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:10px; border: 1px solid rgba(247,181,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.6); text-align:left; }
-        .badge { display:inline-block; background: rgba(247,181,0,0.12); color: var(--accent); padding:6px 8px; border-radius:6px; font-weight:800; margin-bottom:8px; }
-        .plan-title { color: var(--neon-red); margin:8px 0 6px; font-size:18px; }
-        .plan-features { list-style:none; padding:0; margin:0 0 12px; color:#d6d6d6; font-size:13px; }
-        .plan-features li { display:flex; gap:8px; margin-bottom:6px; align-items:flex-start; }
-        .plan-features li::before { content:''; width:8px; height:8px; background:var(--accent); display:inline-block; margin-top:6px; border-radius:2px; }
-        .plan-price { font-weight:900; color: var(--accent); font-size:18px; margin-bottom:8px; text-align:left; }
-        .plan-cta { display:inline-block; background: var(--accent); color:#111; padding:10px 12px; border-radius:8px; font-weight:800; text-decoration:none; margin-top:8px; }
-
-        .discovery { text-align:center; margin-top:8px; color:#d6d6d6; font-weight:700; margin-bottom:18px; }
-        .discovery .highlight { color: var(--accent); font-weight:900; }
-
-        .hero-aside { background: rgba(255,255,255,0.03); padding:16px; border-radius:12px; }
-        .lead-form h4 { margin:0 0 8px; color:var(--accent); text-align:center; }
-        .lead-form input, .lead-form textarea { width:100%; padding:10px; border-radius:8px; background:#111; color:#fff; border:none; margin-bottom:8px; }
-        .submit-btn { width:100%; padding:10px; border-radius:8px; background: var(--neon-red); color:#fff; font-weight:800; border:none; cursor:pointer; }
-
-        .side-actions { margin-top:12px; display:flex; flex-direction:column; gap:10px; }
-        .whatsapp-link { display:block; text-align:center; background: linear-gradient(90deg,#25D366,#128C7E); color:#fff; padding:12px; border-radius:50px; font-weight:800; text-decoration:none; }
-        .call-link { text-align:center; border:2px solid var(--accent); color:var(--accent); padding:10px; border-radius:50px; text-decoration:none; font-weight:800; display:block; }
-
-        .footer { text-align:center; color:#9aa0a6; margin-top:26px; font-size:13px; }
-
-        .float-cta { position:fixed; right:16px; bottom:18px; background: linear-gradient(90deg, var(--neon-yellow), #ffb200); color:#111; padding:14px 18px; border-radius:999px; font-weight:800; text-decoration:none; box-shadow:0 8px 30px rgba(0,0,0,0.6); z-index:999; }
-
-        /* responsive */
-        @media (max-width: 900px) {
-          .hero-grid { grid-template-columns: 1fr; }
-          .hero-aside { order: 2; margin-top:16px; }
-          .hero-left { order: 1; }
-          .desktop-promo { font-size: 32px; }
-          .black-friday { font-size: 28px; }
-          .plans-wrap { gap:12px; }
-          .plan-card { width: 92%; }
+        .plan-card {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(247,181,0,0.12);
         }
       `}</style>
     </div>
