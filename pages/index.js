@@ -30,7 +30,7 @@ export default function Home() {
             </div>
           </div>
           <div className="contact-top">
-            <div className="bf-label">🔥 Black Friday</div>
+            <div className="bf-label neon-red">🔥 BLACK FRIDAY</div>
             <div className="phone-top">(19) 93300-5880</div>
           </div>
         </header>
@@ -44,16 +44,16 @@ export default function Home() {
           >
             <div className="hero-left">
               <div className="neon-title">
-                BLACK <span className="neon-red">FRIDAY</span>
+                <span className="neon-red">BLACK FRIDAY</span>
                 <div className="desktop-promo">
-                  <span className="neon-yellow">DESKTOP</span> PROMO
+                  <span className="neon-yellow">DESKTOP PROMO</span>
                 </div>
               </div>
 
               <div className="banner-cta">
                 <div className="banner-inner">
                   <div className="banner-title">
-                    Planos de 600 Mega e 1 Giga — Oferta Black Friday
+                    Planos de 600 Mega e 1 Giga — <span className="neon-red">Black Friday</span>
                   </div>
                   <div className="banner-sub">
                     HBO Max grátis por 2 meses + Wi-Fi incluso. Ativação rápida e suporte local.
@@ -84,12 +84,8 @@ export default function Home() {
                     price: "R$ 119,99",
                   },
                 ].map((p, i) => (
-                  <motion.article
-                    key={i}
-                    whileHover={{ scale: 1.04 }}
-                    className="plan-card"
-                  >
-                    <div className="badge">BLACK FRIDAY</div>
+                  <motion.article key={i} whileHover={{ scale: 1.04 }} className="plan-card">
+                    <div className="badge neon-red">BLACK FRIDAY</div>
                     <h3 className="plan-title">{p.title}</h3>
                     <ul className="plan-features">
                       {p.features.map((f, idx) => (
@@ -123,29 +119,31 @@ export default function Home() {
               {!submitted ? (
                 <form className="lead-form" onSubmit={handleSubmit}>
                   <h4>Garanta sua oferta exclusiva ⚡</h4>
-                  <input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Seu nome completo"
-                    required
-                  />
-                  <input
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Seu WhatsApp (ex: 19933005880)"
-                    required
-                  />
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Mensagem (opcional)"
-                  />
-                  <button type="submit" className="submit-btn">
-                    Enviar
-                  </button>
+                  <div className="form-border">
+                    <input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Seu nome completo"
+                      required
+                    />
+                    <input
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Seu WhatsApp (ex: 19933005880)"
+                      required
+                    />
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Mensagem (opcional)"
+                    />
+                    <button type="submit" className="submit-btn">
+                      Enviar
+                    </button>
+                  </div>
                 </form>
               ) : (
                 <div className="sent-box">
@@ -195,54 +193,74 @@ export default function Home() {
 
         .page-root {
           min-height: 100vh;
+          background: #000;
           color: #fff;
           font-family: "Poppins", sans-serif;
           padding: 20px;
-          background: #000; /* fundo preto sólido */
         }
 
-        .container { max-width: 1100px; margin: 0 auto; }
+        .container {
+          max-width: 1100px;
+          margin: 0 auto;
+        }
 
-        .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; gap:12px; }
-        .brand { display:flex; align-items:center; gap:12px; }
-        .logo { width:48px; height:48px; border-radius:10px; background: linear-gradient(135deg,#111,var(--accent)); display:flex; align-items:center; justify-content:center; color:#111; font-weight:800; }
-        .brand-title { font-weight:800; font-size:18px; }
-        .brand-sub { color: var(--muted); font-size:13px; }
+        .neon-red {
+          color: var(--neon-red);
+          text-shadow: 0 0 12px var(--neon-red), 0 0 25px var(--neon-red);
+        }
 
-        .hero-grid { display:grid; grid-template-columns: 1fr 380px; gap:20px; align-items:start; }
+        .neon-yellow {
+          color: var(--neon-yellow);
+          text-shadow: 0 0 15px var(--neon-yellow), 0 0 30px var(--neon-yellow);
+        }
 
-        .neon-title { text-align:center; font-size:40px; margin-bottom:8px; }
-        .neon-red { color: var(--neon-red); text-shadow: 0 0 20px var(--neon-red); font-weight:900; }
-        .neon-yellow { color: var(--neon-yellow); text-shadow: 0 0 25px var(--neon-yellow); font-weight:900; }
+        .lead-form {
+          text-align: center;
+          color: var(--accent);
+        }
 
-        .banner-cta { display:flex; justify-content:center; margin-bottom:16px; }
-        .banner-inner { width:100%; max-width:760px; background: linear-gradient(90deg, rgba(247,181,0,0.04), rgba(255,255,255,0.02)); border:1px solid rgba(247,181,0,0.08); padding:12px; border-radius:10px; text-align:center; }
-        .banner-sub { color: var(--muted); margin-top:6px; font-size:14px; }
+        .form-border {
+          border: 2px solid var(--accent);
+          border-radius: 12px;
+          padding: 10px;
+          margin-top: 8px;
+        }
 
-        .plans-wrap { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin: 8px 0 18px; }
+        .lead-form input,
+        .lead-form textarea {
+          width: 100%;
+          padding: 10px;
+          border-radius: 8px;
+          background: #111;
+          color: #fff;
+          border: none;
+          margin-bottom: 8px;
+        }
+
+        .submit-btn {
+          width: 100%;
+          padding: 10px;
+          border-radius: 8px;
+          background: var(--neon-red);
+          color: #fff;
+          font-weight: 800;
+          border: none;
+          cursor: pointer;
+        }
+
         .plan-card {
-          width: 220px;
-          border-radius: 14px;
-          padding: 18px;
-          background: rgba(15,15,15,0.9);
-          border: 2px solid #d4af37; /* borda dourada */
-          box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-          text-align:left;
+          background: rgba(15, 15, 15, 0.9);
+          border: 2px solid #d4af37;
         }
-        .badge { display:inline-block; background: rgba(255,191,0,0.12); color: var(--accent); padding:6px 8px; border-radius:6px; font-weight:800; margin-bottom:8px; }
-        .plan-title { color: var(--neon-red); margin:8px 0 6px; font-size:18px; }
-        .plan-features { list-style:disc; padding-left:18px; margin:0 0 12px; color:#d6d6d6; font-size:13px; }
-        .plan-price { font-weight:900; color: var(--accent); font-size:18px; margin-bottom:8px; text-align:left; }
-        .plan-cta { display:block; text-align:center; background: linear-gradient(90deg,#ffbf00,#ff3838); color:#111; padding:10px 12px; border-radius:10px; font-weight:800; text-decoration:none; border:2px solid #d4af37; }
-
-        .footer { text-align:center; color:#9aa0a6; margin-top:26px; font-size:13px; }
-
-        .float-cta { position:fixed; right:16px; bottom:18px; background: linear-gradient(90deg,#ffbf00,#ff3838); color:#111; padding:14px 18px; border-radius:999px; font-weight:800; text-decoration:none; box-shadow:0 8px 30px rgba(0,0,0,0.6); z-index:999; }
 
         @media (max-width: 900px) {
-          .hero-grid { grid-template-columns: 1fr; }
-          .neon-title { font-size:28px; }
-          .plan-card { width: 94%; margin: 0 auto; }
+          .hero-grid {
+            display: flex;
+            flex-direction: column;
+          }
+          .plan-card {
+            width: 100%;
+          }
         }
       `}</style>
     </div>
