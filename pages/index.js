@@ -5,6 +5,7 @@ import { MessageCircle } from "lucide-react";
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const WA_NUMBER = "5519933005880"; // número com DDI
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,8 +19,6 @@ export default function Home() {
     setFormData({ name: "", phone: "", message: "" });
   };
 
-  const WA_NUMBER = "5519933005880"; // +55 19 93300-5880
-
   return (
     <div className="page-root">
       <div className="container">
@@ -32,7 +31,7 @@ export default function Home() {
             </div>
           </div>
           <div className="contact-top">
-            <div className="bf-label">Black Friday</div>
+            <div className="bf-label">🔥 Black Friday</div>
             <div className="phone-top">(19) 93300-5880</div>
           </div>
         </header>
@@ -46,9 +45,7 @@ export default function Home() {
           >
             <div className="hero-left">
               <div className="neon-title">
-                <div className="black-friday">
-                  BLACK <span className="neon-red">FRIDAY</span>
-                </div>
+                BLACK <span className="neon-red">FRIDAY</span>
                 <div className="desktop-promo">
                   <span className="neon-yellow">DESKTOP</span> PROMO
                 </div>
@@ -56,9 +53,11 @@ export default function Home() {
 
               <div className="banner-cta">
                 <div className="banner-inner">
-                  <div className="banner-title">Planos de 600 Mega e 1 Giga — Oferta Black Friday</div>
+                  <div className="banner-title">
+                    Planos de 600 Mega e 1 Giga — Oferta Black Friday
+                  </div>
                   <div className="banner-sub">
-                    HBO Max grátis por 2 meses + Wi-Fi incluso. Ativação rápida na sua região.
+                    HBO Max grátis por 2 meses + Wi-Fi incluso. Ativação rápida e suporte 100% local.
                   </div>
                 </div>
               </div>
@@ -88,7 +87,7 @@ export default function Home() {
                 ].map((p, i) => (
                   <motion.article
                     key={i}
-                    whileHover={{ scale: 1.03 }}
+                    whileHover={{ scale: 1.05 }}
                     className="plan-card"
                   >
                     <div className="badge">BLACK FRIDAY</div>
@@ -116,7 +115,8 @@ export default function Home() {
               <div className="discovery">
                 <strong>DESCUBRA O POTENCIAL</strong>
                 <br />
-                <span className="highlight">DA SUA INTERNET HOJE</span> <span className="muted">na sua região.</span>
+                <span className="highlight">DA SUA INTERNET HOJE</span>{" "}
+                <span className="muted">na sua região.</span>
               </div>
             </div>
 
@@ -124,29 +124,57 @@ export default function Home() {
               {!submitted ? (
                 <form className="lead-form" onSubmit={handleSubmit}>
                   <h4>Garanta sua oferta exclusiva ⚡</h4>
-                  <input name="name" value={formData.name} onChange={handleChange} placeholder="Seu nome completo" required />
-                  <input name="phone" value={formData.phone} onChange={handleChange} placeholder="Seu WhatsApp (ex: 19933005880)" required />
-                  <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Mensagem (opcional)" />
-                  <button type="submit" className="submit-btn">Enviar</button>
+                  <input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Seu nome completo"
+                    required
+                  />
+                  <input
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Seu WhatsApp (ex: 19933005880)"
+                    required
+                  />
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Mensagem (opcional)"
+                  />
+                  <button type="submit" className="submit-btn">
+                    Enviar
+                  </button>
                 </form>
               ) : (
                 <div className="sent-box">
                   <div className="sent-ok">✅ Enviado com sucesso!</div>
-                  <div className="sent-txt">Obrigado! Vamos retornar pelo WhatsApp.</div>
+                  <div className="sent-txt">Vamos retornar pelo WhatsApp!</div>
                 </div>
               )}
 
               <div className="side-actions">
-                <a href={`https://wa.me/${WA_NUMBER}?text=Quero%20a%20promo%20Black%20Friday%20Desktop!`} target="_blank" rel="noreferrer" className="whatsapp-link">
+                <a
+                  href={`https://wa.me/${WA_NUMBER}?text=Quero%20a%20promo%20Black%20Friday%20Desktop!`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="whatsapp-link"
+                >
                   💬 Falar no WhatsApp
                 </a>
-                <a href="tel:+5519933005880" className="call-link">📞 Ligar agora</a>
+                <a href="tel:+5519933005880" className="call-link">
+                  📞 Ligar agora
+                </a>
               </div>
             </aside>
           </motion.section>
         </main>
 
-        <footer className="footer">© Desktop — Promoção válida por tempo limitado.</footer>
+        <footer className="footer">
+          © Desktop — Promoção válida por tempo limitado.
+        </footer>
       </div>
 
       <a
@@ -166,12 +194,26 @@ export default function Home() {
           --muted: #bfc3c7;
         }
 
+        /* 🌈 Fundo animado */
         .page-root {
           min-height: 100vh;
-          background: radial-gradient(circle at top, #060606, #000);
           color: #fff;
           font-family: "Poppins", sans-serif;
-          padding: 18px;
+          padding: 20px;
+          background: linear-gradient(270deg, #000, #080808, #111);
+          background-size: 600% 600%;
+          animation: bgFlow 10s ease infinite;
+        }
+        @keyframes bgFlow {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
 
         .container {
@@ -183,6 +225,22 @@ export default function Home() {
           display: grid;
           grid-template-columns: 1fr 380px;
           gap: 20px;
+        }
+
+        .neon-title {
+          font-size: 40px;
+          font-weight: 800;
+          text-shadow: 0 0 10px #ffbf00, 0 0 25px #ff3838;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+        .neon-red {
+          color: var(--neon-red);
+          text-shadow: 0 0 20px var(--neon-red);
+        }
+        .neon-yellow {
+          color: var(--neon-yellow);
+          text-shadow: 0 0 25px var(--neon-yellow);
         }
 
         .plan-card {
@@ -222,16 +280,6 @@ export default function Home() {
           margin-top: 8px;
         }
 
-        .whatsapp-link {
-          background: linear-gradient(90deg, #25d366, #128c7e);
-          border-radius: 40px;
-          padding: 12px;
-          color: #fff;
-          font-weight: 600;
-          text-align: center;
-          text-decoration: none;
-        }
-
         .float-cta {
           position: fixed;
           right: 16px;
@@ -246,27 +294,16 @@ export default function Home() {
           z-index: 999;
         }
 
-        /* 🔹 MOBILE OTIMIZAÇÃO */
+        /* 📱 Responsividade */
         @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr;
           }
-          .hero-aside {
-            order: 2;
-            margin-top: 20px;
-          }
-          .hero-left {
-            order: 1;
+          .neon-title {
+            font-size: 28px;
           }
           .plan-card {
             width: 100%;
-          }
-          .neon-title {
-            text-align: center;
-            font-size: 26px;
-          }
-          .banner-inner {
-            text-align: center;
           }
           .plan-cta {
             width: 100%;
